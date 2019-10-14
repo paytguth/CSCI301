@@ -1,7 +1,10 @@
 #lang racket
+;; F. Payton Guthrie
+;; CSCI301
+;; Lab 3
 
 (define member?
-  (lambda (x L )
+  (lambda (x L)
     (if (null? L)
         #f
         (if (equal? x (car L))
@@ -13,7 +16,7 @@
 )
 
 (define subset?
-  (lambda (L1 L2 )
+  (lambda (L1 L2)
     (if (null? L1)
         #t
         (if (member? (car L1) L2)
@@ -25,7 +28,7 @@
 )
 
 (define set-equal?
-  (lambda (L1 L2 )
+  (lambda (L1 L2)
     (if (and (subset? L1 L2) (subset? L2 L1))
        #t
        #f
@@ -34,10 +37,10 @@
 )
 
 (define intersect
-  (lambda (L1 L2 )
+  (lambda (L1 L2)
     (if (null? L1)
         L1
-        (if(member? (car L1) L2)
+        (if (member? (car L1) L2)
            (append (list(car L1)) (intersect (cdr L1) L2))
            (intersect (cdr L1) L2)
         )
@@ -46,7 +49,7 @@
 )
 
 (define union
-  (lambda (L1 L2 )
+  (lambda (L1 L2)
     (if (null? L1)
         L2
         (if (member? (car L1) L2)
